@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,5 +37,18 @@ public class ItineraryListActivity extends AppCompatActivity {
 
         final ItineraryRecyclerAdapter adapter = new ItineraryRecyclerAdapter(itineraryModels);
         listItineraries.setAdapter(adapter);
+
+        listItineraries.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), listItineraries, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                ItineraryModel itinerary = itineraryModels.get(position);
+                Toast.makeText(getApplicationContext(), itinerary.getDriver(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
     }
 }

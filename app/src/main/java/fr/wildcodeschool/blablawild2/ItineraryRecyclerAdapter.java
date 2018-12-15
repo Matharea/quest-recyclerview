@@ -51,4 +51,6 @@ public class ItineraryRecyclerAdapter extends RecyclerView.Adapter<ItineraryRecy
             this.tvPrice = v.findViewById(R.id.tv_price);
         }
     }
+
+
 }
